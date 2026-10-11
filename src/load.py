@@ -2,7 +2,7 @@
 
 Requires: fastf1, pyarrow.
 Run from the project root (paths are relative to it):
-    python src/load.py
+    uv run python src/load.py
 """
 from pathlib import Path
 
@@ -89,5 +89,6 @@ if __name__ == "__main__":
     table = add_gaps(build_lap_table(session), ref="VER")
     DATA_DIR.mkdir(exist_ok=True)
     table.to_parquet(OUT_PATH, index=False)
-    print(f"Saved {len(table)} driver-laps to {OUT_PATH}")
+    print(f"Saved {len(table):,} driver-laps to {OUT_PATH}")
+    print("\n>>> Sanity check: pit window for ALO, VER, OCO, HAM, RUS, GAS, TSU <<<")
     sanity_check(table)
