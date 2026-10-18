@@ -11,3 +11,4 @@ wheels/
 
 data/
 .DS_Store
+src/scratch_*.py
